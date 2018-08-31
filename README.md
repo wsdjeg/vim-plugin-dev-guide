@@ -1,6 +1,15 @@
 # Vim 插件开发指南
+
 > - 作者： wsdjeg
 > - LICENSE： [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
+
+<!-- vim-markdown-toc GFM -->
+
+- [简介](#简介)
+- [Vim 插件的项目结构](#vim-插件的项目结构)
+- [Vim 自定义命令](#vim-自定义命令)
+
+<!-- vim-markdown-toc -->
 
 ## 简介
 
@@ -64,6 +73,21 @@ colors 目录下主要存储一些颜色主题脚本，当执行 `:colorscheme +
 
 在 indent 目录里，主要是一些语法对齐相关的脚本。
 
+## Vim 自定义命令
 
+Vim 的自定义命令可以通过 `command` 命令来定义，比如：
 
+```vim
+command! -nargs=* -complete=custom,helloworld#complete HelloWorld call helloworld#test()
+```
 
+紧接 `command` 命令气候的 `!` 表示强制定义该命令，即使前面已经定义过了同样名称的命令，也将其覆盖掉。 `-nargs=*` 表示，该命令可接受任意个数的参数，
+包括 0 个。`-nargs` 的取值有以下几种情况：
+
+| 参数       | 定义                     |
+| ---------- | ------------------------ |
+| `-nargs=0` | 不接受任何参数（默认）   |
+| `-nagrs=1` | 只接受一个参数           |
+| `-nargs=*` | 可接收任意个数参数       |
+| `-nargs=?` | 可接受 1 个或者 0 个参数 |
+| `-nargs=+` | 至少提供一个参数         |
