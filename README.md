@@ -1,4 +1,5 @@
 # Vim 插件开发指南
+> 作者： wsdjeg LICENSE： [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
 
 ## 简介
 
