@@ -2,9 +2,9 @@
 
 ## 简介
 
-Vim 插件开发者无疑是从 Vim 的用户转换而来，而在开发 Vim 插件之前，你需要掌握 Vim 的基本使用技巧，可以先阅读 《Vim 从入门到精通》，该文章主要介绍了 Vim 的基本使用技巧。
+Vim 插件开发者无疑是从 Vim 的用户转换而来，而在开发 Vim 插件之前，你需要掌握 Vim 的基本使用技巧，可以先阅读 [《Vim 从入门到精通》](https://github.com/wsdjeg/vim-galore-zh_cn)，该文章主要介绍了 Vim 的基本使用技巧。
 
-开发 Vim 插件，离不开 Vim 脚本语言，需要对 Vim 脚本语言有一个大致的了解。《Vim 脚本语法指南》讲解了 Vim 脚本的一些语法技巧。
+开发 Vim 插件，离不开 Vim 脚本语言，需要对 Vim 脚本语言有一个大致的了解。[《Vim 脚本语法指南》](https://github.com/lymslive/vimllearn)讲解了 Vim 脚本的一些语法技巧。
 
 此外，在开发 Vim 插件之前，你还需要了解 vimrc 和 Vim 插件的区别。
 
