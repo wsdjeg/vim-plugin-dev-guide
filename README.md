@@ -14,8 +14,11 @@ Vim 插件开发者无疑是从 Vim 的用户转换而来，而在开发 Vim 插
 
 ```text
 autoload/               自动载入脚本
+colors/                 颜色主题
 plugin/                 在 Vim 启动时将被载入的脚本
 ftdetect/               文件类型识别脚本
+syntax/                 语法高亮文件
+ftplugin/               文件类型相关插件
 ```
 
 下面，我们来逐一说明下每一个目录的用途：
@@ -39,3 +42,14 @@ autocmd BufNewFile,BufRead *.helloworld set filetype=helloworld
 ```
 
 以上脚本使得 Vim 在打开以 `.helloworld` 为后缀的文件时，将文件类型设置为 `helloworld`。通常，这个脚本的文件名是和所需要设置的文件类型一样的，上面的例子中文件的名称就是 `helloworld.vim`。
+
+**syntax/**
+
+这一目录下的文件，主要是定义语法高亮的。通常文件名前缀和对应的语言类型相同，比如 Java 的语法文件文件名为 `java.vim`。 关于如何写语法文件，将在后面详细介绍。
+
+**colors/**
+
+colors 目录下主要存储一些颜色主题脚本，当执行 `:colorscheme + 主题名` 命令时，对应的颜色主题脚本将被载入。比如执行 `:colorscheme helloworld` 时，`colors/helloworld.vim` 这一脚本将被载入。
+
+
+
