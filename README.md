@@ -164,5 +164,5 @@ endfunction
 在上面的函数里，返回的实际上是一个有四行的字符串，Vim 会自动根据 `ArgLead` 来筛选出可以用来补全的选项，并展示在状态栏上。
 此时，四行里最后一个 `world` 因为开头不匹配 `ArgLead` 所以不会被展示在状态栏上，因此补全效果只有三个可选项。
 
-![command-complete](https://user-images.githubusercontent.com/13142418/44915590-f2b43a80-ad65-11e8-92aa-0f4eac3a0a26.gif)
+[![command-complete](https://user-images.githubusercontent.com/13142418/44915590-f2b43a80-ad65-11e8-92aa-0f4eac3a0a26.gif)]()
 
