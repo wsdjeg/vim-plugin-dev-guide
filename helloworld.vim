@@ -1,5 +1,5 @@
 function! helloworld#complete(ArgLead, CmdLine, CursorPos) abort
-    return "hellojeky\nhellolucy\nhellolily"
+    return filter(['hellolily', 'hellojeky', 'hellofoo', 'world'], 'v:val =~ "^" . a:ArgLead')
 endfunction
 function! helloworld#test()
 
@@ -7,4 +7,4 @@ function! helloworld#test()
 
 endfunction
 
-command! -nargs=* -complete=custom,helloworld#complete HelloWorld call helloworld#test()
+command! -nargs=* -complete=customlist,helloworld#complete HelloWorld call helloworld#test()

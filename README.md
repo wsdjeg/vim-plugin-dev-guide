@@ -164,5 +164,28 @@ endfunction
 在上面的函数里，返回的实际上是一个有四行的字符串，Vim 会自动根据 `ArgLead` 来筛选出可以用来补全的选项，并展示在状态栏上。
 此时，四行里最后一个 `world` 因为开头不匹配 `ArgLead` 所以不会被展示在状态栏上，因此补全效果只有三个可选项。
 
-[![command-complete](https://user-images.githubusercontent.com/13142418/44915590-f2b43a80-ad65-11e8-92aa-0f4eac3a0a26.gif)]()
+![command-complete](https://user-images.githubusercontent.com/13142418/44915590-f2b43a80-ad65-11e8-92aa-0f4eac3a0a26.gif)
+
+`-complete=customlist,{func}` 这一参数所对应的补全函数，也是接受相同的三个参数，但该函数返回的是一个 list。
+
+下面，我们来测试这个函数：
+
+```vim
+function! helloworld#complete(ArgLead, CmdLine, CursorPos) abort
+    return ['hellolily', 'hellojeky', 'hellofoo', 'world']
+endfunction
+```
+
+![command-complete](https://user-images.githubusercontent.com/13142418/44916266-e03b0080-ad67-11e8-9cb8-535a970768e4.gif)
+
+区别很明显，`customlist` 补全时不会自动根据 `ArgLead` 进行筛选，并且直接补全整个返回的 list，即使列表中有一个 `world` 完全与 `ArgLead(hello)` 不同，
+也会将其直接覆盖。因此，当使用 `customlist` 时，需要在函数内根据 `ArgLead` 进行筛选，将函数该为如下，就可以得到相同效果了：
+
+```vim
+function! helloworld#complete(ArgLead, CmdLine, CursorPos) abort
+    return filter(['hellolily', 'hellojeky', 'hellofoo', 'world'], 'v:val =~ "^" . a:ArgLead')
+endfunction
+```
+
+
 
