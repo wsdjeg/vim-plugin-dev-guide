@@ -1,5 +1,6 @@
 # Vim 插件开发指南
-> 作者： wsdjeg LICENSE： [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
+> - 作者： wsdjeg
+> - LICENSE： [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
 
 ## 简介
 
@@ -20,6 +21,8 @@ plugin/                 在 Vim 启动时将被载入的脚本
 ftdetect/               文件类型识别脚本
 syntax/                 语法高亮文件
 ftplugin/               文件类型相关插件
+compiler/	              编译器
+indent/                 语法对齐
 ```
 
 下面，我们来逐一说明下每一个目录的用途：
@@ -51,6 +54,16 @@ autocmd BufNewFile,BufRead *.helloworld set filetype=helloworld
 **colors/**
 
 colors 目录下主要存储一些颜色主题脚本，当执行 `:colorscheme + 主题名` 命令时，对应的颜色主题脚本将被载入。比如执行 `:colorscheme helloworld` 时，`colors/helloworld.vim` 这一脚本将被载入。
+
+**compiler/**
+
+这一名录里是一些预设的编译器参数，主要给 `:make` 命令使用的。在最新版的 Vim 中可以使用 `:compiler! 编译器名` 来为当前缓冲区设定编译器。比如当执行
+`:compiler! helloworld` 时，`compiler/helloworld.vim` 这一脚本将被载入。
+
+**indent/**
+
+在 indent 目录里，主要是一些语法对齐相关的脚本。
+
 
 
 
