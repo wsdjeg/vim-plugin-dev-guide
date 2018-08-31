@@ -91,3 +91,42 @@ command! -nargs=* -complete=custom,helloworld#complete HelloWorld call helloworl
 | `-nargs=*` | 可接收任意个数参数       |
 | `-nargs=?` | 可接受 1 个或者 0 个参数 |
 | `-nargs=+` | 至少提供一个参数         |
+
+`-complete=custom,helloworld#complete` 表示，改命令的补全方式采用的是自定义函数 `helloworld#complete`。`-complete` 可以接受的参数包括如下内容：
+
+| 参数                          | 描述                                          |
+| ----------------------------- | --------------------------------------------- |
+| `-complete=augroup`           | autocmd 组名                                  |
+| `-complete=buffer`            | buffer 名称                                   |
+| `-complete=behave`            | `:behave` 命令子选项                          |
+| `-complete=color`             | 颜色主题                                      |
+| `-complete=command`           | Ex 命令及参数                                 |
+| `-complete=compiler`          | 编译器                                        |
+| `-complete=cscope`            | `:cscope` 命令子选项                          |
+| `-complete=dir`               | 文件夹名称                                    |
+| `-complete=environment`       | 环境变量名称                                  |
+| `-complete=event`             | 自动命令的事件名称                            |
+| `-complete=expression`        | Vim 表达式                                    |
+| `-complete=file`              | 文件及文件夹名称                              |
+| `-complete=file_in_path`      | `path` 选项里的文件及文件夹名称               |
+| `-complete=filetype`          | 文件类型                                      |
+| `-complete=function`          | 函数名称                                      |
+| `-complete=help`              | 帮助命令子选项                                |
+| `-complete=highlight`         | 高亮组名称                                    |
+| `-complete=history`           | `:history` 子选项                             |
+| `-complete=locale`            | locale 名称（相当于命令 `locale -a` 的输出）  |
+| `-complete=mapping`           | 快捷键名称                                    |
+| `-complete=menu`              | 目录                                          |
+| `-complete=messages`          | `:messages` 命令子选项                        |
+| `-complete=option`            | Vim 选项名称                                  |
+| `-complete=packadd`           | 可选的插件名称补全                            |
+| `-complete=shellcmd`          | shell 命令补全                                |
+| `-complete=sign`              | `:sign` 命令补全                              |
+| `-complete=syntax`            | 语法文件名称补全                              |
+| `-complete=syntime`           | `:syntime` 命令补全                           |
+| `-complete=tag`               | tags                                          |
+| `-complete=tag_listfiles`     | tags, file names are shown when CTRL-D is hit |
+| `-complete=user`              | user names                                    |
+| `-complete=var`               | user variables                                |
+| `-complete=custom,{func}`     | custom completion, defined via {func}         |
+| `-complete=customlist,{func}` | custom completion, defined via {func}         |
