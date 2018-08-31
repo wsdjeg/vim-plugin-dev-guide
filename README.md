@@ -130,3 +130,39 @@ command! -nargs=* -complete=custom,helloworld#complete HelloWorld call helloworl
 | `-complete=var`               | user variables                                |
 | `-complete=custom,{func}`     | custom completion, defined via {func}         |
 | `-complete=customlist,{func}` | custom completion, defined via {func}         |
+
+这里主要解释一些自定义的补全函数，从上面的表格可以看出，有两种定义自定义命令补全函数的方式。
+`-complete=custom,{func}` 和 `-complete=customlist,{func}`。这两种区别再与函数的返回值，
+前者要求是一个 `string` 而后者要求补全函数的返回值是 `list`.
+自定义命令补全函数接受三个参数。
+
+```vim
+:function {func}(ArgLead, CmdLine, CursorPos)
+```
+
+我们已实际的例子来解释这三个参数的含义，比如在命令行是如下内容时，`|` 表示光标位置，我按下了 `<Tab>` 键调用了补全函数，那么传递给补全函数的三个参数分别是：
+
+```vim
+:HelloWorld hello|
+```
+
+| 参数名      | 描述                                                               |
+| ----------- | ------------------------------------------------------------------ |
+| `ArgLead`   | 当前需要补全的部分，通常是光标前的字符串，上面的例子中是指 `hello` |
+| `CmdLine`   | 指的是整个命令行内的内容，此时是 `HelloWorld hello`                |
+| `CursorPos` | 值得当前光标所在的位置，此时是 16, 即为 `len('HelloWorld hello')`  |
+
+下面，我们来看下定义的函数具体内容：
+
+```vim
+function! helloworld#complete(ArgLead, CmdLine, CursorPos) abort
+    return join(['hellolily', 'hellojeky', 'hellofoo', 'world']
+            \ "\n")
+endfunction
+```
+
+在上面的函数里，返回的实际上是一个有四行的字符串，Vim 会自动根据 `ArgLead` 来筛选出可以用来补全的选项，并展示在状态栏上。
+此时，四行里最后一个 `world` 因为开头不匹配 `ArgLead` 所以不会被展示在状态栏上，因此补全效果只有三个可选项。
+
+![command-complete](https://user-images.githubusercontent.com/13142418/44915590-f2b43a80-ad65-11e8-92aa-0f4eac3a0a26.gif)
+
