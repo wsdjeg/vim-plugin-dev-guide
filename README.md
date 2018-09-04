@@ -15,7 +15,22 @@
 
 Vim 插件开发者无疑是从 Vim 的用户转换而来，而在开发 Vim 插件之前，你需要掌握 Vim 的基本使用技巧，可以先阅读 [《Vim 从入门到精通》](https://github.com/wsdjeg/vim-galore-zh_cn)，该文章主要介绍了 Vim 的基本使用技巧。
 
-开发 Vim 插件，离不开 Vim 脚本语言，需要对 Vim 脚本语言有一个大致的了解。[《Vim 脚本语法指南》](https://github.com/lymslive/vimllearn)讲解了 Vim 脚本的一些语法技巧。
+开发 Vim 插件，离不开 Vim 脚本语言，需要对 Vim 脚本语言有一个大致的了解。[《Vim 脚本语法指南》](https://github.com/lymslive/vimllearn)讲解了 Vim 脚本的一些语法技巧。关于 Vim 脚本的语法我想再这篇教程里面再详细说明一下。
+
+## Vim 脚本语法
+
+### 注释
+
+在写脚本时，经常需要在源码里面添加一些注释信息，辅助阅读源码，Vim 脚本注释比较简单，是以 `"` 开头的，只存在行注释，不存在块注释。因此，对于多行注释，需要再每行开头添加 `"`。
+
+示例：
+
+```vim
+" 这是一行注释，
+let g:helloworld = 1  " 这是在行尾注释
+```
+
+###
 
 此外，在开发 Vim 插件之前，你还需要了解 vimrc 和 Vim 插件的区别。
 
