@@ -30,6 +30,30 @@ Vim 插件开发者无疑是从 Vim 的用户转换而来，而在开发 Vim 插
 let g:helloworld = 1  " 这是在行尾注释
 ```
 
+### 变量
+
+在 Vim 脚本里，可以使用关键字 `let` 来申明变量，最基本的方式为：
+
+```vim
+" 定义一个类型是字符串的变量 g:helloworld
+let g:helloworl = "sss"
+```
+
+前面的例子中，是定义一个字符串，Vim 脚本中支持以下几种数据类型：
+
+类型 | ID | 描述
+--- | --- | ---
+Number | 0 | 整数
+String | 1 | 字符串
+Funcref | 2 | 函数指针
+List | 3 | 列表
+Dictionary | 4 | 字典
+Float | 5 | 浮点数
+Boolean | 6 | 
+None | 7 |
+Job | 8 |
+Channel| 9 |
+
 ###
 
 此外，在开发 Vim 插件之前，你还需要了解 vimrc 和 Vim 插件的区别。
