@@ -13,9 +13,7 @@
 
 ## 简介
 
-Vim 插件开发者无疑是从 Vim 的用户转换而来，而在开发 Vim 插件之前，你需要掌握 Vim 的基本使用技巧，可以先阅读 [《Vim 从入门到精通》](https://github.com/wsdjeg/vim-galore-zh_cn)，该文章主要介绍了 Vim 的基本使用技巧。
-
-开发 Vim 插件，离不开 Vim 脚本语言，需要对 Vim 脚本语言有一个大致的了解。[《Vim 脚本语法指南》](https://github.com/lymslive/vimllearn)讲解了 Vim 脚本的一些语法技巧。关于 Vim 脚本的语法我想再这篇教程里面再详细说明一下。
+Vim 插件开发中文指南，主要包括 Vim 脚本语法、插件开发技巧等。
 
 ## 基本语法
 
@@ -254,5 +252,10 @@ function! helloworld#complete(ArgLead, CmdLine, CursorPos) abort
 endfunction
 ```
 
+
+## 推荐阅读
+
+- [Vim 中文简明使用教程](https://github.com/wsdjeg/vim-galore-zh_cn)
+- [Vim 脚本语法指北](https://github.com/lymslive/vimllearn)
 
 
