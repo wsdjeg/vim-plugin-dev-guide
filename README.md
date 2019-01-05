@@ -6,8 +6,13 @@
 <!-- vim-markdown-toc GFM -->
 
 - [简介](#简介)
+- [基本语法](#基本语法)
+  - [注释](#注释)
+  - [变量](#变量)
+  - [作用域](#作用域)
 - [Vim 插件的项目结构](#vim-插件的项目结构)
 - [Vim 自定义命令](#vim-自定义命令)
+- [推荐阅读](#推荐阅读)
 
 <!-- vim-markdown-toc -->
 
@@ -30,7 +35,6 @@ let g:helloworld = 1  " 这是在行尾注释
 
 ### 变量
 
-
 在 Vim 脚本里，可以使用关键字 `let` 来申明变量，最基本的方式为：
 
 ```vim
@@ -38,22 +42,20 @@ let g:helloworld = 1  " 这是在行尾注释
 let g:helloworl = "sss"
 ```
 
-
-
 前面的例子中，是定义一个字符串，Vim 脚本中支持以下几种数据类型：
 
-类型 | ID | 描述
---- | --- | ---
-Number | 0 | 整数
-String | 1 | 字符串
-Funcref | 2 | 函数指针
-List | 3 | 列表
-Dictionary | 4 | 字典
-Float | 5 | 浮点数
-Boolean | 6 | 
-None | 7 |
-Job | 8 |
-Channel| 9 |
+| 类型       | ID  | 描述     |
+| ---------- | --- | -------- |
+| Number     | 0   | 整数     |
+| String     | 1   | 字符串   |
+| Funcref    | 2   | 函数指针 |
+| List       | 3   | 列表     |
+| Dictionary | 4   | 字典     |
+| Float      | 5   | 浮点数   |
+| Boolean    | 6   |
+| None       | 7   |
+| Job        | 8   |
+| Channel    | 9   |
 
 ### 作用域
 
@@ -71,16 +73,15 @@ function! HelloWorld()
 endfunction
 ```
 
-前缀 | 描述
----  | ---
-`g:` | 全局变量
-`l:` | 局部变量，只可在函数内部使用
-`s:` | 脚本变量，只可以在当前脚本函数内使用
-`v:` | Vim 特殊变量
-`b:` | 作用域限定在某一个缓冲区内
-`w:` | 作用域限定在窗口内部
-`t:` | 作用域限定在标签内部
-
+| 前缀 | 描述                                 |
+| ---- | ------------------------------------ |
+| `g:` | 全局变量                             |
+| `l:` | 局部变量，只可在函数内部使用         |
+| `s:` | 脚本变量，只可以在当前脚本函数内使用 |
+| `v:` | Vim 特殊变量                         |
+| `b:` | 作用域限定在某一个缓冲区内           |
+| `w:` | 作用域限定在窗口内部                 |
+| `t:` | 作用域限定在标签内部                 |
 
 此外，在开发 Vim 插件之前，你还需要了解 vimrc 和 Vim 插件的区别。
 
@@ -101,7 +102,7 @@ indent/                 语法对齐
 
 下面，我们来逐一说明下每一个目录的用途：
 
-**autoload/** 
+**autoload/**
 
 顾名思义，该文件夹下的脚本会在特点条件下自动被载入。这里的特定条件指的是当某一个 autoload 类型的函数被调用，并且 Vim 当前环境下并未定义该函数时。
 比如调用 `call helloworld#init()` 时，Vim 会先检测当前环境下是否定义了该函数，若没有，则在 `autoload/` 目录下找 `helloworld.vim` 这一文件，
@@ -252,10 +253,7 @@ function! helloworld#complete(ArgLead, CmdLine, CursorPos) abort
 endfunction
 ```
 
-
 ## 推荐阅读
 
 - [Vim 中文简明使用教程](https://github.com/wsdjeg/vim-galore-zh_cn)
 - [Vim 脚本语法指北](https://github.com/lymslive/vimllearn)
-
-
