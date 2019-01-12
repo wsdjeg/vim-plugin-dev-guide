@@ -253,6 +253,39 @@ function! helloworld#complete(ArgLead, CmdLine, CursorPos) abort
 endfunction
 ```
 
+- `-bang` 参数：
+
+在定义 Vim 自定义命令时，可以通过 `-bang` 参数来申明这个命令接受感叹号。比如 `:q` 与 `:q!`。
+下面是一个实例：
+
+```vim
+fu! s:hello(bang)
+  if a:bang
+    echom "带有叹号"
+  else
+    echom "不带有叹号"
+  endif
+endf
+command! -bang Hello call s:hello(<bang>0)
+```
+
+在上面的实例里，函数的参数写法为 `<bang>0`, 当执行`:Hello!` 时，传递给 `s:hello` 这一函数的参数是
+`!0` 即为 `1`，因此，此时看到打印了”带有叹号“。
+
+其实除了写成 `<bang>0`, 还可以写 `<bang>1`, 甚至是 `<bang>` + 一个全局变量。比如：
+
+```vim
+let g:hello = 0
+fu! s:hello(bang)
+  if a:bang
+    echom "带有叹号"
+  else
+    echom "不带有叹号"
+  endif
+endf
+command! -bang Hello call s:hello(<bang>g:hello)
+```
+
 ## 推荐阅读
 
 - [Vim 中文简明使用教程](https://github.com/wsdjeg/vim-galore-zh_cn)
