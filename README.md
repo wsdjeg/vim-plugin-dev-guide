@@ -110,7 +110,7 @@ indent/                 语法对齐
 
 **plugin/**
 
-该目录里的文件将在 Vim 启动事被运行，作为一个优秀的 Vim 插件，应当尽量该目录下的脚本内容。通常，可以将插件的快捷键、命令的定义保留在这个文件里。
+该目录里的文件将在 Vim 启动时被运行，作为一个优秀的 Vim 插件，应当尽量该目录下的脚本内容。通常，可以将插件的快捷键、命令的定义保留在这个文件里。
 
 **ftdetect/**
 
@@ -147,7 +147,7 @@ Vim 的自定义命令可以通过 `command` 命令来定义，比如：
 command! -nargs=* -complete=custom,helloworld#complete HelloWorld call helloworld#test()
 ```
 
-紧接 `command` 命令气候的 `!` 表示强制定义该命令，即使前面已经定义过了同样名称的命令，也将其覆盖掉。 `-nargs=*` 表示，该命令可接受任意个数的参数，
+紧接 `command` 命令其后的 `!` 表示强制定义该命令，即使前面已经定义过了同样名称的命令，也将其覆盖掉。 `-nargs=*` 表示，该命令可接受任意个数的参数，
 包括 0 个。`-nargs` 的取值有以下几种情况：
 
 | 参数       | 定义                     |
@@ -198,7 +198,7 @@ command! -nargs=* -complete=custom,helloworld#complete HelloWorld call helloworl
 | `-complete=customlist,{func}` | custom completion, defined via {func}         |
 
 这里主要解释一些自定义的补全函数，从上面的表格可以看出，有两种定义自定义命令补全函数的方式。
-`-complete=custom,{func}` 和 `-complete=customlist,{func}`。这两种区别再与函数的返回值，
+`-complete=custom,{func}` 和 `-complete=customlist,{func}`。这两种区别在与函数的返回值，
 前者要求是一个 `string` 而后者要求补全函数的返回值是 `list`.
 自定义命令补全函数接受三个参数。
 
@@ -206,7 +206,7 @@ command! -nargs=* -complete=custom,helloworld#complete HelloWorld call helloworl
 :function {func}(ArgLead, CmdLine, CursorPos)
 ```
 
-我们已实际的例子来解释这三个参数的含义，比如在命令行是如下内容时，`|` 表示光标位置，我按下了 `<Tab>` 键调用了补全函数，那么传递给补全函数的三个参数分别是：
+我们以实际的例子来解释这三个参数的含义，比如在命令行是如下内容时，`|` 表示光标位置，我按下了 `<Tab>` 键调用了补全函数，那么传递给补全函数的三个参数分别是：
 
 ```vim
 :HelloWorld hello|
@@ -216,7 +216,7 @@ command! -nargs=* -complete=custom,helloworld#complete HelloWorld call helloworl
 | ----------- | ------------------------------------------------------------------ |
 | `ArgLead`   | 当前需要补全的部分，通常是光标前的字符串，上面的例子中是指 `hello` |
 | `CmdLine`   | 指的是整个命令行内的内容，此时是 `HelloWorld hello`                |
-| `CursorPos` | 值得当前光标所在的位置，此时是 16, 即为 `len('HelloWorld hello')`  |
+| `CursorPos` | 指的当前光标所在的位置，此时是 16, 即为 `len('HelloWorld hello')`  |
 
 下面，我们来看下定义的函数具体内容：
 
