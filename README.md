@@ -10,6 +10,7 @@
   - [注释](#注释)
   - [变量](#变量)
   - [作用域](#作用域)
+  - [函数定义](#函数定义)
 - [插件的目录结构](#插件的目录结构)
 - [Vim 自定义命令](#vim-自定义命令)
 - [推荐阅读](#推荐阅读)
@@ -84,6 +85,36 @@ endfunction
 | `t:` | 作用域限定在标签内部                 |
 
 此外，在开发 Vim 插件之前，你还需要了解 vimrc 和 Vim 插件的区别。
+
+### 函数定义
+
+可以使用 `function` 关键字定义函数，可缩写成 `func` 或者 `fn`, 格式：
+
+```
+:fu[nction][!] {name}([arguments]) [range] [abort] [dict] [closure]
+```
+
+当使用了参数 `closure` 时，函数可以访问外部的变量或者参数，比如：
+
+```vim
+function! Foo()
+  let x = 0
+  function! Bar() closure
+    let x += 1
+    return 1
+  endfunction
+  return funcref('Bar')
+endfunction
+
+let F = Foo()
+
+echo F()
+" 1
+echo F()
+" 2
+echo F()
+" 3
+```
 
 ## 插件的目录结构
 
