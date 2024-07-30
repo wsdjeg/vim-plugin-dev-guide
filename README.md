@@ -292,3 +292,4 @@ command! -bang Hello call s:hello(<bang>g:hello)
 
 - [Vim 中文简明使用教程](https://github.com/wsdjeg/vim-galore-zh_cn)
 - [Vim 脚本语法指北](https://github.com/lymslive/vimllearn)
+- [Vim 脚本规范](https://spacevim.org/cn/conventions/)
